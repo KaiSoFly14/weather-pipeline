@@ -11,7 +11,7 @@ class WeatherParams(TypedDict):
     timezone: str
     forecast_days: int
 
-params: WeatherParams = {
+  DEFAULT_WEATHER_PARAMS: WeatherParams = {
     "latitude": 48.13715,
     "longitude": 11.57612,
     "hourly": [
@@ -21,9 +21,12 @@ params: WeatherParams = {
     ],
     "timezone": "Europe/Berlin",
     "forecast_days": 1,
-}
+    }
 
-def extract_weather_data(params: WeatherParams = params) -> dict:
+def extract_weather_data(
+    params: WeatherParams = DEFAULT_WEATHER_PARAMS
+) -> dict:
+
     # Open-Meteo expects the hourly values as a comma-separated string
     # params["hourly"] = ",".join(params["hourly"])
 
